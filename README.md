@@ -12,7 +12,13 @@ addresses or inference-server configuration are included.
 
 - HF/TRL: actual 16K long-window forward/backward, parameter update, save/reload,
   task-disjoint held-out evaluation, and native short-prompt generation.
-- The new full-epoch run is still in progress; a smoke test is not a full epoch.
+- The 16K reference full epoch completed **41/41 optimizer steps** over 1,312
+  training windows from 278 trajectories, with mean training loss **0.9361**.
+  All 496 adapter tensors were finite and matched the trained parameter hashes.
+  A fresh process restored the final adapter, evaluated **135/135 held-out
+  windows** (token-weighted NLL **1.0577**), and generated the final answer `OK`
+  for the fixed short instruction probe. These checks do not establish benchmark
+  improvement or serving-mode correctness.
 - NeMo: data-label alignment and native configuration save/restore are checked.
   Full-model GPU training/checkpoint restoration is still experimental/pending.
 
