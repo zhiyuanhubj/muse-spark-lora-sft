@@ -1,0 +1,12 @@
+# Install a PyTorch 2.14 build matching your CUDA environment separately.
+torch>=2.14,<2.15
+transformers==5.20.0
+trl==1.14.0
+peft==0.21.0
+huggingface-hub==1.32.0
+tokenizers==0.23.2
+safetensors==0.8.0
+datasets
+accelerate
+numpy
+jinja2
