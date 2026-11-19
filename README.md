@@ -19,8 +19,13 @@ addresses or inference-server configuration are included.
   windows** (token-weighted NLL **1.0577**), and generated the final answer `OK`
   for the fixed short instruction probe. These checks do not establish benchmark
   improvement or serving-mode correctness.
-- NeMo: data-label alignment and native configuration save/restore are checked.
-  Full-model GPU training/checkpoint restoration is still experimental/pending.
+- NeMo / Megatron Bridge: the full-model 32-H200 recipe completed **3/3 real
+  optimizer updates**, with finite adapter weights changed on every rank and
+  only adapters trainable. Native checkpoint save and fresh-process restoration
+  passed: each of the **32 rank-local parameter hashes matched** its trained
+  counterpart. Held-out subset forwards completed before and after restoration.
+  This is a functional framework check, **not a complete epoch**, HF export,
+  generation test or serving certification.
 
 The reference HF profile uses **32 H200 GPUs**, a **16,384-token combined
 input/output window**, attention-only LoRA **r=16, alpha=32, dropout=0.05**, BF16
